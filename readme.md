@@ -13,3 +13,7 @@ You will need to use the numpy library to access the sine and cosine functions. 
 ## Generate Random Password
 
 Ask the user how long they want their password to be, and how many letters and numbers they want in their password. Have a mix of upper and lowercase letters, as well as numbers and symbols. The password should be a minimum of 6 characters long.
+
+## Hangman
+
+This will be similar to guessing the number, except we are guessing the word. The user needs to guess letters. Give the user no more than 6 attempts for guessing wrong letter. This will mean you will have to have a counter. You can download a ‘sowpods’ dictionary file or csv file to use as a way to get a random word to use.
