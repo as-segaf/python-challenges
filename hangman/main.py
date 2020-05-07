@@ -4,19 +4,26 @@ import random
 import re
 
 
+# Welcoming user
 print("Hello! What is your name?")
 username = input()
 print(f"Hi {username}, This is a Hangman game\nYou only have 6 chances to guess wrong letter")
 print()
+
+# Get all words
 with open("words.txt", "r") as f:
     output = f.read().split("\n")
+
 randomWord = random.choice(output)
 hiddenWord = list('_' * len(randomWord))  # Mystery word that pops up
 misses = '' # Wrong guess
 chances = 6
+
+# Game limit
 while chances >= 0:
     print(hiddenWord)
     print(f"Misses: {misses},       {chances} chances left")
+    # Input limit
     while True:
         guess = input("Enter a character:")
         lenInput = len(guess)
@@ -28,12 +35,13 @@ while chances >= 0:
             print("That is not an alphabet")
         else:
             break
+
     print()
     print()
     rightGuess = [m.start() for m in re.finditer(guess, randomWord)]    # Get index of the character that guessed 
     if rightGuess:
         for r in rightGuess:
-            hiddenWord[r] = guess   # Change _ to the guessed character
+            hiddenWord[r] = guess   # Change '_' to the guessed character
         if '_' not in hiddenWord:
             print(hiddenWord)
             print(f"Congratulaions!! You did it!\nThe secret word is \"{randomWord}\"")
