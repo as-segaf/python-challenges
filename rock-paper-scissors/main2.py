@@ -2,39 +2,49 @@
 
 import random
 
+
 print("Hello! What is your name?")
 username = input()
 print(f"Well, {username}, let's play rock-paper-scissor game\nThe game ends when one of us get 3 wins")
 print("Press 1 to choose rock, press 2 to choose paper, press 3 for scissor")
-options = {1:'rock',2:'paper',3:'scissor'}
-com_wins, user_wins = 0,0
-
-while com_wins < 3 and user_wins < 3: 
-    com_pick = options[random.randint(1,3)] 
-    pick_num = int(input("Pick yours:"))
-    user_pick = options[pick_num]
-    print(f"{user_pick}(you) vs {com_pick}(com)")
-
-    if comp_pick == user_pick:
+options = {1:'rock', 2:'paper', 3:'scissor'}
+comWins = 0
+userWins = 0
+while comWins < 3 and userWins < 3: 
+    while True:
+    pickNum = int(input("Pick yours:"))
+    try:
+        if len(pickNum) > 1:
+            print("You can only input 1 number")
+        elif len(pickNum) == 0:
+            print("You didn't input anything")
+        else:
+            break
+    except ValueError:
+        print("That is not a number, please enter a valid number!!")
+    comPick = options[random.randint(1,3)] 
+    pickNum = int(input("Pick yours:"))
+    userPick = options[pickNum]
+    print(f"{userPick}(you) vs {comPick}(com)")
+    if comPick == userPick:
         print("Draw")
-    elif comp_pick == 'rock' and user_pick == 'scissor':
+    elif comPick == 'rock' and userPick == 'scissor':
         print("Computer wins")
-        com_wins+=1
-    elif comp_pick == 'rock' and user_pick == 'paper':
+        comWins += 1
+    elif comPick == 'rock' and userPick == 'paper':
         print("You win")
-        user_wins+=1
-    elif comp_pick == 'paper' and user_pick == 'rock':
+        userWins += 1
+    elif comPick == 'paper' and userPick == 'rock':
         print("Computer wins")
-        com_wins+=1
-    elif comp_pick == 'paper' and user_pick == 'scissor':
+        comWins += 1
+    elif comPick == 'paper' and userPick == 'scissor':
         print("You win")
-        user_wins+=1
-    elif comp_pick == 'scissor' and user_pick == 'paper':
+        userWins += 1
+    elif comPick == 'scissor' and userPick == 'paper':
         print("Computer wins")
-        com_wins+=1
-    elif comp_pick == 'scissor' and user_pick == 'rock':
+        comWins += 1
+    elif comPick == 'scissor' and userPick == 'rock':
         print("You win")
-        user_wins+=1
-
-    print("Computer's wins:",com_wins)
-    print("Your wins:",user_wins)
+        userWins += 1
+    print("Computer's wins:",comWins)
+    print("Your wins:",userWins)
